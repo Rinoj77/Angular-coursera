@@ -53,7 +53,7 @@
 
   function foundItems() {
     var ddo = {
-      templateUrl: 'foundItems.html',
+      templateUrl: 'assignment3/foundItems.html',
       scope: {
         items: '<',
         message: '<',
