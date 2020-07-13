@@ -1,0 +1,5 @@
+<div class="col-sm-3 list-group">
+  <a ui-sref="categories.item({ item: item.short_name, category: item.name })" class="list-group-item" ng-repeat="item in $ctrl.items">{{ item.name }}</a>
+</div>
+
+<ui-view></ui-view>
