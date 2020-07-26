@@ -1,17 +1,23 @@
 (function() {
     'use strict';
-    angular.module('public')
-        .controller('MyInfoController', MyInfoController);
-    MyInfoController.$inject = ['UserService'];
+    
+    angular.module('public').controller('InfoController', infoController);
+    
+    infoController.$inject = ['MenuService', 'ApiPath'];
+    var infoController = function(MenuService, ApiPath) {
+        var vm = this;
+        vm.apiPath = ApiPath;
 
-    function MyInfoController(UserService) {
-        var myInfoCtrl = this;
-        myInfoCtrl.myInfo = UserService.getUserData();
-        if (myInfoCtrl.myInfo.length > 0) {
-            UserService.getUserFavMenu(myInfoCtrl.myInfo[0].favMenu)
-                .then(function(result) {
-                    myInfoCtrl.menuItem = result;
-                });
+        vm.signedUp = false;
+
+        vm.user = MenuService.getUser();
+        console.log('User is', vm.user);
+        if (angular.equals(vm.user, {})) {
+            vm.signedUp = false;
+        } else {
+            vm.signedUp = true;
         }
-    }
+    };
+
+    
 })();
