@@ -1,30 +1,19 @@
 <div class="container">
-    <div ng-hide="myInfoCtrl.myInfo.length > 0" class="alert alert-warning" role="alert">
-        Not Signed Up Yet. <a ui-sref="public.signup" class="alert-link">Sign up Now!</a>
-    </div>
-    <div ng-show="myInfoCtrl.myInfo.length > 0" class="col-md-12 myinfo">
-        <h2 class="text-center"><span class="glyphicon glyphicon-info-sign"></span> My Info</h2>
-        <div class="col-md-10 col-centered">
-          <div class="row">
-              <div class="myinfo-heading">First Name</div>
-              <div class="myinfo-content">{{myInfoCtrl.myInfo[0].firstName}}</div>
-          </div>
-          <div class="row">
-              <div class="myinfo-heading">Last Name</div>
-              <div class="myinfo-content">{{myInfoCtrl.myInfo[0].lastName}}</div>
-          </div>
-          <div class="row">
-              <div class="myinfo-heading"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Email</div>
-              <div class="myinfo-content">{{myInfoCtrl.myInfo[0].email}}</div>
-          </div>
-          <div class="row">
-              <div class="myinfo-heading"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> Phone</div>
-              <div class="myinfo-content">{{myInfoCtrl.myInfo[0].phone}}</div>
-          </div>
-          <div class="row">
-              <div class="myinfo-heading">Favorite Dish</div>
-              <div class="myinfo-content"><menu-item item="myInfoCtrl.menuItem"></menu-item></div>
-          </div>
+    <div class="row">
+        <div ng-show="infoCtrl.signedUp">
+            <h1>User Information</h1>
+            <p>First name: {{infoCtrl.user.firstName}}</p>
+            <p>Last name: {{infoCtrl.user.lastName}}</p>
+            <p>Email: {{infoCtrl.user.email}}</p>
+            <p>Phone: {{infoCtrl.user.phone}}</p>
+            <p>Favorite dish: {{infoCtrl.user.favoriteDishDetails.name}}</p>
+            <p>{{infoCtrl.user.favoriteDishDetails.description}}</p>
+            <img class="img-responsive" ng-src="{{infoCtrl.apiPath}}/images/{{infoCtrl.user.favoriteDish}}.jpg" alt="{{infoCtrl.user.favoriteDishDetails.name}}" />
+
+        </div>
+
+        <div ng-hide="infoCtrl.signedUp">
+            <h1>You need to signup first. <a class="btn btn-default" ui-sref="public.signup">Signup now!</a></h1>
         </div>
     </div>
 </div>
